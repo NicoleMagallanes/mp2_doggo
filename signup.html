@@ -72,7 +72,7 @@
             <li><a href="order.html">Order</a></li>
             <li><a href="#">Contact us</a></li>
             <li><a href="#">About us</a></li>
-            <li class="fixed_flex"><a href="signup.html" class="btn btn_1 chat_popup">Sign Up</a> <a href=""
+            <li class="fixed_flex"><a href="" class="btn btn_1 chat_popup">Sign Up</a> <a href="#"
                     class="btn btn_2 chat_popup">Order now</a> </li>
         </ul>
     </menu>
@@ -104,70 +104,22 @@
 
     <!--MAIN-->
     <main>
-        <!--division_1-->
-        <div class="divisions division_1 flex">
-            <section class="flex_content">
-                <figure>
-                    <img src="https://i.ibb.co/r4z6xk7/Delivery.png" alt="" loading="lazy" />
-                </figure>
-            </section>
-            <section class="flex_content padding_2x">
-                <em class="cursive">How to order?</em>
-                <h2 class="title big">Get it easy</h2>
-                <span class="bar"></span>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
-                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution</p>
-                <ul class="flex">
-                    <li class="fixed_flex">
-                        <figure><img
-                                src="https://i.ibb.co/sqcHnmx/167-1676470-paw-clip-art-dog-paw-print-clip-art-removebg-preview.png"
-                                alt="" /></figure>
-                        <aside>
-                            <h5>Pick your Fav!</h5>
-                            <p>Choose your Pet's favourite meal</p>
-                        </aside>
-                    </li>
-                    <li class="fixed_flex">
-                        <figure><img
-                                src="https://i.ibb.co/sqcHnmx/167-1676470-paw-clip-art-dog-paw-print-clip-art-removebg-preview.png"
-                                alt="" /></figure>
-                        <aside>
-                            <h5>Delivery time</h5>
-                            <p>Choose your pickup time</p>
-                        </aside>
-                    </li>
-                    <li class="fixed_flex">
-                        <figure><img
-                                src="https://i.ibb.co/sqcHnmx/167-1676470-paw-clip-art-dog-paw-print-clip-art-removebg-preview.png"
-                                alt="" /></figure>
-                        <aside>
-                            <h5>Pay securely</h5>
-                            <p>Make a secure payment</p>
-                        </aside>
-                    </li>
-                    <li class="fixed_flex">
-                        <figure><img
-                                src="https://i.ibb.co/sqcHnmx/167-1676470-paw-clip-art-dog-paw-print-clip-art-removebg-preview.png"
-                                alt="" /></figure>
-                        <aside>
-                            <h5>Enjoy our meal</h5>
-                            <p>Have a delicious & fresh meal for your Dog.</p>
-                        </aside>
-                    </li>
-                </ul>
-            </section>
-        </div>
-        <!---Placeholder Youtube Video-->
-        <div style="text-align: center;">
-            <iframe width="420" height="345" src="https://www.youtube.com/embed/SF0-xhaLXNI?autoplay=1&mute=1"
-                style="border: 2px solid black; margin: 20px auto;">
-            </iframe>
-            <iframe width="420" height="345" src="https://www.youtube.com/embed/SF0-xhaLXNI?autoplay=1&mute=1"
-                style="border: 2px solid black; margin: 20px auto;">
-            </iframe>
-        </div>
-        
+        <form id="login-form">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Log in</button>
+        </form>
+
+        <form id="signup-form">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" required>
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="password" required>
+            <button type="submit">Sign up</button>
+        </form>
+
 
         <!--division_3-->
         <div class="divisions division_3">
@@ -180,12 +132,12 @@
                     <p>Available on Desktop and Mobile devices</p>
                     <aside class="fixed_flex">
                         <a href="#" class="fixed_flex">
-                            <img src="assets/pawicon.png" alt="" width="50" height="50"/>
+                            <img src="assets/pawicon.png" alt="" width="50" height="50" />
                             <strong>
                                 <h5>Order Now</h5>
                                 <h3>Click to Order</h3>
                             </strong>
-                        </a>                
+                        </a>
                     </aside>
                 </section>
             </article>
@@ -229,13 +181,58 @@
         </strong>
     </a>
 
-    <!--JAVASCRIPT
-
-<script type="text/javascript" src="assets/js/home.js"></script>
-<script type="text/javascript" src="assets/js/animate.js"></script>
-</body>
-</html>-->
+    <!--JAVASCRIPT--->
     <script type="text/javascript" src="assets/js/main.js"></script>
+    <script>
+        import Commerce from '@chec/commerce.js';
+
+        const commerce = new Commerce('<your_public_key>');
+
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+
+        // add an event listener to the login form
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = loginForm.email.value;
+            const password = loginForm.password.value;
+
+            try {
+                // authenticate the user
+                const { jwt } = await commerce.auth.login(email, password);
+
+                // save the JWT to local storage
+                localStorage.setItem('commercejs_token', jwt);
+
+                // redirect the user to the home page
+                window.location.href = '/';
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        // add an event listener to the signup form
+        signupForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = signupForm.email.value;
+            const password = signupForm.password.value;
+
+            try {
+                // register the user
+                const { jwt } = await commerce.auth.signup({ email, password });
+
+                // save the JWT to local storage
+                localStorage.setItem('commercejs_token', jwt);
+
+                // redirect the user to the home page
+                window.location.href = '/';
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
 </body>
 
 </html>

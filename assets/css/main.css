@@ -522,13 +522,14 @@ menu ul li .fa {
 
 .msg {
     position: fixed;
-    bottom: 1.5rem;
+    bottom: 2.5rem;
     right: 2rem;
     align-items: center;
     color: var(--dark);
     padding: 1rem;
     border-radius: 10px;
     transition: 0.5s;
+    background-color: var(--primary);
 }
 
 .msg  img {
