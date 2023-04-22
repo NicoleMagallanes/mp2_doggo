@@ -113,8 +113,8 @@
         </form>
 
         <form id="signup-form">
-            <label for="signup-email">Email</label>
-            <input type="email" id="signup-email" name="email" required>
+            <label for="external-id">External ID</label>
+            <input type="text" id="external-id" name="external_id" required>
             <label for="signup-password">Password</label>
             <input type="password" id="signup-password" name="password" required>
             <button type="submit">Sign up</button>
@@ -184,9 +184,8 @@
     <!--JAVASCRIPT--->
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script>
-        import Commerce from '@chec/commerce.js';
+        const commerce = new Commerce('pk_test_5172082d11c86890854d9c1b25c6ab4c9aebba9bd9fcc');
 
-        const commerce = new Commerce('<your_public_key>');
 
         const loginForm = document.getElementById('login-form');
         const signupForm = document.getElementById('signup-form');
@@ -206,7 +205,7 @@
                 localStorage.setItem('commercejs_token', jwt);
 
                 // redirect the user to the home page
-                window.location.href = '/';
+                window.location.href = 'index.html';
             } catch (error) {
                 console.error(error);
             }
@@ -216,12 +215,12 @@
         signupForm.addEventListener('submit', async function (event) {
             event.preventDefault();
 
-            const email = signupForm.email.value;
+            const externalId = signupForm.external_id.value;
             const password = signupForm.password.value;
 
             try {
-                // register the user
-                const { jwt } = await commerce.auth.signup({ email, password });
+                // register the user with the external ID as the email address
+                const { jwt } = await commerce.auth.signup({ email: externalId, password });
 
                 // save the JWT to local storage
                 localStorage.setItem('commercejs_token', jwt);
@@ -232,6 +231,21 @@
                 console.error(error);
             }
         });
+
+        // get the cart for the logged-in user
+        async function getCart() {
+            try {
+                const token = localStorage.getItem('commercejs_token');
+                const { cart } = await commerce.cart.retrieve(token);
+
+                console.log(cart);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // call the getCart() function when the page loads
+        getCart();
     </script>
 </body>
 

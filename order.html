@@ -38,7 +38,6 @@
     <!--cart commerce.js-->
     <script src="https://cdn.chec.io/checkout.js"></script>
 
-    <!--Cart-->
 
 </head>
 
@@ -48,7 +47,7 @@
     <!--NAV-->
     <nav>
         <section class="flex_content">
-            <a href="index.html"><img src="https://i.ibb.co/6Ry23nX/DOGGO-2.png" ></a>
+            <a href="index.html"><img src="https://i.ibb.co/6Ry23nX/DOGGO-2.png"></a>
         </section>
         <section class="flex_content">
             <a href="javascript:void(0)" class="ham"><i class="fa fa-bars"></i></a>
@@ -70,7 +69,8 @@
         </ul>
         <br>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Home</a>
+            <br>
             <li class="dropdown">
                 <a href="javascript:void(0)">Categories</a>
                 <aside>
@@ -83,9 +83,16 @@
             <li><a href="order.html">Order</a></li>
             <li><a href="#">Contact us</a></li>
             <li><a href="#">About us</a></li>
+            <!-- Search Bar -->
+            <input id="search" type="text" placeholder="Search..." />
+            <ul class="list">
+                <li>Royal Canin</li>
+            </ul>
             <li class="fixed_flex"><a href="" class="btn btn_1 chat_popup">Sign Up</a> <a href="#"
                     class="btn btn_2 chat_popup">Order now</a> </li>
+            
         </ul>
+
     </menu>
 
 
@@ -224,49 +231,86 @@
                 </div>
             </div>
         </div>
-
-        <!--SideBar Cart-->
-
-        <body class="spaces ">
-
-            <div id="chec-basket" class="animated" onclick="cartShow()">
-                <span class="cart-icon">
-                    <img src="https://i.ibb.co/4jM369V/shopping-cart-set-of-shopping-cart-icon-on-white-background-shopping-cart-icon-shopping-cart-design.jpg"
-                        width="23">
-                </span>
-                <span class="items" data-chec="cart-items">0 Items</span>
-                <span class="subtotal" data-chec="cart-subtotal">$0.00</span>
-                <a class="view-cart mobile-only" href="javascript:cartShow()">View Cart</a>
-            </div>
-
-            <section id="shopping-cart">
-                <aside id="cart-overview" class="inactive">
-                    <hr class="hologram-bar open">
-                    <div class="shopping-cart-wrap">
-                        <a class="hide-cart mobile-only" href="javascript:cartHide()">Close Cart</a>
-                        <h3 class="shopping-cart-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h3>
-                        <ul class="line-items">
-                            <li class="empty">Cart is empty!</li>
-                        </ul>
-                        <div class="subtotal">
-                            <h4>Subtotal</h4><span>-</span>
+        <div class="product" data-product-name="Royal Canin MiniStarter for Puppies"
+            data-product-id="prod_A12Jwr9E3dlPjn">
+            <div class="product-details-overlay">
+                <div class="product-contents">
+                    <div class="images ignore">
+                        <div class="hover-overlay">
+                            <a href="javascript:showProductDetailsModal('prod_A12Jwr9E3dlPjn')"
+                                class="learn-more">Product Details</a>
+                            <a href="javascript:Spaces.AddToCart('prod_A12Jwr9E3dlPjn');" class="buy-now"><i
+                                    class="fa fa-lock" aria-hidden="true"></i> <b>Add to Cart</b></a>
                         </div>
-                        <div class="closing">
-                            <a class="go-to-checkout" href="javascript:Spaces.goToCheckout()"><i class="fa fa-lock"></i>
-                                <b>Secure</b> Checkout</a>
-                            <small class="secure">All transactions are safe & secured by 2048 bit SSL
-                                encryption.</small>
+                        <img src="https://cdn.chec.io/merchants/51720/assets/zSg4Bg0FRLNNzlCX|packshot-starter-mini-shn17.png"
+                            class="product-image--main" onerror="this.style.display='none';">
+                        <div class="product-images">
+                            <img src="https://cdn.chec.io/merchants/51720/assets/zSg4Bg0FRLNNzlCX|packshot-starter-mini-shn17.png"
+                                class="product-image carousel-cell" alt="" onerror="this.style.display='none';">
                         </div>
                     </div>
 
-                    <div id="spaces-inline-checkout"></div>
-                    <hr class="hologram-bar close">
-                </aside>
+                    <div class="product-info">
+                        <span class="product-name">Royal Canin MiniStarter for Puppies <span
+                                class="inline-price">₱300.00</span></span>
+                        <span class="product-description">
+                            <p>Complete feed for dogs - For the small breed bitch (from 1 to 10 kg) and her puppies:
+                                bitch at the end of gestation and during lactation - Weaning puppies up to 2 months old.
+                            </p>
+                        </span>
+                        <span class="product-price">₱300.00</span>
 
-                <div id="cart-active-overlay" onclick="cartHide()"></div>
-            </section>
+                        <a href="javascript:hideProductDetailsModal()" class="close">Close</a>
+                        <a href="javascript:Spaces.AddToCart('prod_A12Jwr9E3dlPjn');" class="buy-now"><i
+                                class="fa fa-lock" aria-hidden="true"></i> <b>Add to Cart</b></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        </body>
+    <!--SideBar Cart-->
+
+    <body class="spaces ">
+
+        <div id="chec-basket" class="animated" onclick="cartShow()">
+            <span class="cart-icon">
+                <img src="https://i.ibb.co/4jM369V/shopping-cart-set-of-shopping-cart-icon-on-white-background-shopping-cart-icon-shopping-cart-design.jpg"
+                    width="23">
+            </span>
+            <span class="items" data-chec="cart-items">0 Items</span>
+            <span class="subtotal" data-chec="cart-subtotal">$0.00</span>
+            <a class="view-cart mobile-only" href="javascript:cartShow()">View Cart</a>
+        </div>
+
+        <section id="shopping-cart">
+            <aside id="cart-overview" class="inactive">
+
+                <div class="shopping-cart-wrap">
+                    <a class="hide-cart mobile-only" href="javascript:cartHide()">Close Cart</a>
+                    <h3 class="shopping-cart-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h3>
+                    <ul class="line-items">
+                        <li class="empty">Cart is empty!</li>
+                    </ul>
+                    <div class="subtotal">
+                        <h4>Subtotal</h4><span>-</span>
+                    </div>
+                    <div class="closing">
+                        <a class="go-to-checkout" href="javascript:Spaces.goToCheckout()"><i class="fa fa-lock"></i>
+                            <b>Secure</b> Checkout</a>
+                        <small class="secure">All transactions are safe & secured by 2048 bit SSL
+                            encryption.</small>
+                    </div>
+                </div>
+
+                <div id="spaces-inline-checkout"></div>
+                <hr class="hologram-bar close">
+            </aside>
+
+            <div id="cart-active-overlay" onclick="cartHide()"></div>
+        </section>
+
+    </body>
     </section>
 </body>
 <!--division_3-->
@@ -332,7 +376,7 @@
 
 <!--JAVASCRIPT-->
 
-                        
+
 <script src="assets/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Add to Cart API Integration -->
@@ -418,7 +462,32 @@
         $('body').removeClass('no-scroll');
         $('.product-image--main').show();
     }
+    // Retrieve the customers current cart (tracked by their browser)
+    Commerce.cart.retrieve().then(cart => console.log(cart));
 
+    // Create a new cart rather than using any existing cart
+    Commerce.cart.refresh().then(cart => console.log(cart));
+
+    //Search Bar
+
+    let input = document.getElementById("search");
+    //get list of value
+    let list = document.querySelectorAll(".list li");
+
+    //function search on the list.
+    function search() {
+        for (let i = 0; i < list.length; i += 1) {
+            //check if the element contains the value of the input
+            if (list[i].innerText.toLowerCase().includes(input.value.toLowerCase())) {
+                list[i].style.display = "block";
+            } else {
+                list[i].style.display = "none";
+            }
+        }
+    }
+
+    //to the change run search.
+    input.addEventListener('input', search);
 </script>
 </body>
 
